@@ -1,0 +1,35 @@
+# 5.
+# use netwons method for f(x) = x^2 - 10*cos(x)
+
+# The function in question
+function Newton(x)
+    return(x^2 - 10*cos(x))
+end
+
+# The functions derivative
+function NewtonPrime(x)
+    return(2*x + 10*sin(x))
+end
+
+# Newtons method
+function Leibniz(x)
+    last = x
+    x = x - Newton(x) / NewtonPrime(x)
+    while(abs(last - x) > 0.00001)
+        last = x
+        x = x - Newton(x) / NewtonPrime(x)
+    end
+    return(x)
+end
+
+# Main loop
+for n in [-100, -50, -25, 25, 50, 100]
+    print("for ")
+    println(n)
+    print(Leibniz(n))
+    println()
+    println()
+end
+
+println("the values for -25 and 25 are the exact opposite of what i expected")
+print("but they're both still roots, so technically correct")
