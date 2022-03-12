@@ -1,0 +1,33 @@
+# 1.
+
+# Solving x - 2^(-x) = 0 via the Bisection Method
+# this only works if the function is rising. 
+# for decreasing functions swap a and b in lines 19 and 21.
+
+# Define the main function, initial brackets [a,b],
+# midpoint, and iteration variable.
+function main(x)
+    return (x - 2^(-x)) 
+end
+
+a = 0
+b = 1
+i = 0
+m = (a + b) / 2
+
+# main loop
+while((b - a) > 0.00001)
+    m = (a + b) / 2
+    i += 1
+    if(main(m) < 0)
+        a = m
+    else
+        b = m
+    end
+end
+
+# Output
+println(m)
+print("after ")
+print(i)
+print(" iterations")
